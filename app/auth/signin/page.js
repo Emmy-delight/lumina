@@ -1,16 +1,23 @@
+import { auth, signIn } from "@/auth";
 import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 
 
+
 export default function Signin () {
     return (
-         <main className="min-h-[520px] flex justify-center bg-gray-300 py-8 px-2 ">
+         <main className="min-h-screen flex justify-center bg-gray-300 py-8 px-2 ">
            <article>
                 <div className="w-full md:w-[24em]  rounded-md bg-white p-4">
                    <h1 className="text-2xl mb-2">Sign into Lumina</h1>
                     <p className="text-sm text-gray-600 mb-4">Sign into using.....</p>
                 
-                <form className="mb-2">
+                <form 
+                   action={async () => {
+                       "use server";
+                       await signIn ("google")
+                   }}
+                 className="mb-2">
                    <button type="submit"
                    className="w-full h-[3.2em] flex justify-center items-center gap-2 border-b-2 border-blue-500 bg-black rounded-md">
                         <FaGoogle  className="text-green-500 text-2xl"/>
